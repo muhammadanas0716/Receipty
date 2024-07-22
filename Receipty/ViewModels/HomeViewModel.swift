@@ -4,12 +4,6 @@
 //
 //  Created by Muhammad Anas on 12/07/2024.
 //
-//
-//  HomeViewModel.swift
-//  Receipty
-//
-//  Created by Muhammad Anas on 12/07/2024.
-//
 
 import Foundation
 import SwiftUI
@@ -59,7 +53,6 @@ class HomeViewModel: ObservableObject {
         receipts.remove(atOffsets: offsets)
         saveReceipts()
     }
-    
 
     func saveReceipts() {
         UserDefaultsHelper.shared.saveReceipts(receipts)

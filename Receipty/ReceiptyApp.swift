@@ -14,18 +14,13 @@ struct ReceiptyApp: App {
     init() {
         if !hasLaunchedBefore {
             UserDefaultsHelper.shared.initializeDefaultReceipts()
+            hasLaunchedBefore = true
         }
     }
 
     var body: some Scene {
         WindowGroup {
-            if hasLaunchedBefore {
-                HomeView()
-                    .environmentObject(HomeViewModel())
-            } else {
-                WelcomeView(hasLaunchedBefore: $hasLaunchedBefore)
-                    .environmentObject(HomeViewModel())
-            }
+            HomeView()
         }
     }
 }

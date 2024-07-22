@@ -110,7 +110,6 @@ struct HomeView: View {
         }
     }
 
-
     private func setNavigationBarAppearance() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
