@@ -29,3 +29,4 @@ struct ReceiptyApp: App {
         }
     }
 }
+
