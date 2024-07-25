@@ -76,7 +76,7 @@ struct AboutView: View {
                     
                     Spacer()
                     
-                    Text("App Version: 1.0.1")
+                    Text("App Version: 1.0.0")
                         .foregroundColor(.gray)
                         .font(.footnote)
                         .padding(.bottom, 20)

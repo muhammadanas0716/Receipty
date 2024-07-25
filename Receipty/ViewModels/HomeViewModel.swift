@@ -18,6 +18,7 @@ class HomeViewModel: ObservableObject {
     init() {
         loadReceipts()
         setupSearch()
+        
     }
 
     private func loadReceipts() {

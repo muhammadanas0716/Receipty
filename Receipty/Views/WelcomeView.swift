@@ -5,16 +5,16 @@
 //  Created by Muhammad Anas on 12/07/2024.
 //
 
+
 import SwiftUI
 
 struct WelcomeView: View {
     @Binding var hasLaunchedBefore: Bool
     @State private var username: String = ""
     @State private var isLoading: Bool = false
-    @State private var isActive: Bool = false
     @State private var showContent: Bool = false
     @Environment(\.colorScheme) var colorScheme
-    
+
     var body: some View {
         VStack {
             // App Icon
@@ -25,7 +25,7 @@ struct WelcomeView: View {
                 .padding(.bottom, 20)
                 .scaleEffect(showContent ? 1.0 : 0.5)
                 .animation(.easeOut(duration: 1.0), value: showContent)
-            
+
             // Heading
             Text("Welcome to Receipty")
                 .font(.largeTitle)
@@ -34,7 +34,7 @@ struct WelcomeView: View {
                 .padding(.bottom, 10)
                 .opacity(showContent ? 1 : 0)
                 .animation(.easeIn(duration: 1.0).delay(0.4), value: showContent)
-            
+
             // Subtitle
             Text("Your smart receipt manager")
                 .font(.title3)
@@ -42,7 +42,7 @@ struct WelcomeView: View {
                 .padding(.bottom, 30)
                 .opacity(showContent ? 1 : 0)
                 .animation(.easeIn(duration: 1.0).delay(0.5), value: showContent)
-            
+
             // Feature Details
             VStack(alignment: .leading, spacing: 15) {
                 FeatureRow(iconName: "doc.text.fill", featureText: "Save and organize your receipts")
@@ -53,7 +53,7 @@ struct WelcomeView: View {
             .opacity(showContent ? 1 : 0)
             .offset(y: showContent ? 0 : 20)
             .animation(.easeIn(duration: 1.0).delay(0.6), value: showContent)
-            
+
             // Username Text Field
             VStack(alignment: .leading) {
                 TextField("What should we call you?", text: $username)
@@ -64,7 +64,7 @@ struct WelcomeView: View {
             .opacity(showContent ? 1 : 0)
             .offset(y: showContent ? 0 : 20)
             .animation(.easeIn(duration: 1.0).delay(0.7), value: showContent)
-            
+
             // Continue Button
             if isLoading {
                 ProgressView()
@@ -81,7 +81,6 @@ struct WelcomeView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         withAnimation {
                             isLoading = false
-                            isActive = true
                             hasLaunchedBefore = true
                         }
                     }
@@ -90,7 +89,6 @@ struct WelcomeView: View {
                         Text("Continue")
                             .font(.headline)
                             .padding()
-                            
                         Image(systemName: "arrow.right")
                             .padding()
                     }
@@ -102,11 +100,6 @@ struct WelcomeView: View {
                     .animation(.easeInOut(duration: 2.0), value: isLoading)
                 }
             }
-            
-            NavigationLink(destination: HomeView(), isActive: $isActive) {
-                EmptyView()
-            }
-            .hidden()
         }
         .padding()
         .background(colorScheme == .dark ? Color.primaryBackground : Color.white)
@@ -123,7 +116,7 @@ struct FeatureRow: View {
     var iconName: String
     var featureText: String
     @Environment(\.colorScheme) var colorScheme
-    
+
     var body: some View {
         HStack {
             Image(systemName: iconName)
@@ -148,4 +141,3 @@ struct WelcomeView_Previews: PreviewProvider {
             .preferredColorScheme(.dark) // Preview in dark mode
     }
 }
-
